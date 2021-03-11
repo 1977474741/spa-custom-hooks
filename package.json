@@ -1,12 +1,13 @@
 {
   "name": "vue-custom-hooks",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.3",
+  "description": "基于vue的自定义钩子",
+  "author": "Api调用师 <1977474741@qq.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
-  "main": "src/js/vue-custom-hooks/index.js",
+  "main": "/lib/vue-custom-hooks/index.js",
   "repository": "https://github.com/1977474741/vue-custom-hooks.git",
   "npm": "https://www.npmjs.com/package/vue-custom-hooks",
   "dependencies": {
@@ -15,6 +16,11 @@
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
+  "files":[
+      "/lib/vue-custom-hooks/",
+      "/package.json",
+      "/README.md"
+  ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",

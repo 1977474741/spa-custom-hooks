@@ -1,4 +1,4 @@
-import CustomHook from '../js/custom-hook/index.js';
+import CustomHook from '/lib/vue-custom-hooks/index.js';
 let MyPlugin = {};
 MyPlugin.install = function(Vue) {
     CustomHook.init(Vue,{

@@ -176,4 +176,3 @@ export default {
 `on{UserInfo}{BeforeMount}{Login}{Position}` //所有注册的钩子都可以随意搭配，声明的顺序不影响钩子执行
 ````
 
-

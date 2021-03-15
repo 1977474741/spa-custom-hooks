@@ -6,116 +6,121 @@
 #### 它能解决什么问题
 解决业务页面需要同时监听多个全局状态的问题
 
-####来点真实的场景吧
+#### 来点真实的场景吧
 用户首次进入小程序需要在app.vue的onLaunch登录获取token和用户信息，然后存到store里。现在要做一个页面，进来把用户的头像昵称等渲染在canvas上，需求关键点在于两个条件都要满足。
-######方案1、在页面里监听store是否拿到了用户信息&&dom树渲染完毕。
-```javascript
-	data(){
-		return{
-			//任务完成数
-			num: 0
-		}
-	},
-    computed: {
-		userInfo: function(){
-			return this.$store.state.userInfo
-	},
-	watch:{
-		userInfo(newval,oldval){
-			//监听拿到用户信息了
-			if(newval.nickName){
-				this.num++;
-				if(this.num == 2){
-					//可以渲染canvas了
-					renderCanvas();
-				}
-			}
-		}
-	},
-	mounted(){
-		//dom渲染完毕
-		this.num++;
-		if(this.num == 2){
-			//可以渲染canvas了
-			renderCanvas();
-		}
-	}
-```
 
-######方案2、在页面里去获取用户信息，同样需要判断两个条件是否都满足。
+###### 方案1、在页面里监听store是否拿到了用户信息&&dom树渲染完毕。
 ```javascript
-	data(){
-		return{
-			//任务完成数
-			num: 0
-		}
-	},
-    computed: {
-		userInfo: function(){
-			return this.$store.state.userInfo
-	},
-	methods:{
-		getUserInfo(cb){
-			//发起请求获取用户信息
-			let userinfo = {nickName:'张三'};
-			this.$store.commit('userinfo',userinfo);
-			cb(userinfo)
-		}
-	},
-	created(){
-		this.getUserInfo(()=>{
+data(){
+	return{
+		//任务完成数
+		num: 0
+	}
+},
+computed: {
+	userInfo: function(){
+		return this.$store.state.userInfo
+},
+watch:{
+	userInfo(newval,oldval){
+		//监听拿到用户信息了
+		if(newval.nickName){
 			this.num++;
 			if(this.num == 2){
 				//可以渲染canvas了
 				renderCanvas();
 			}
-		})
-	},
-	mounted(){
-		//dom渲染完毕
+		}
+	}
+},
+mounted(){
+	//dom渲染完毕
+	this.num++;
+	if(this.num == 2){
+		//可以渲染canvas了
+		renderCanvas();
+	}
+}
+```
+
+###### 方案2、在页面里去获取用户信息，同样需要判断两个条件是否都满足。
+```javascript
+data(){
+	return{
+		//任务完成数
+		num: 0
+	}
+},
+computed: {
+	userInfo: function(){
+		return this.$store.state.userInfo
+},
+methods:{
+	getUserInfo(cb){
+		//发起请求获取用户信息
+		let userinfo = {nickName:'张三'};
+		this.$store.commit('userinfo',userinfo);
+		cb(userinfo)
+	}
+},
+created(){
+	this.getUserInfo(()=>{
 		this.num++;
 		if(this.num == 2){
 			//可以渲染canvas了
 			renderCanvas();
 		}
-	},
-```
-####使用vue-custom-hooks完成以上场景
-```javascript
-	//第一步，安装插件：
-	npm install vue-custom-hooks
-	//第二步，main.js里注册插件：
-	import CustomHook from 'vue-custom-hooks';
-	Vue.use({
-		install(Vue) {
-			CustomHook.init(Vue,{
-				 'UserInfo':{
-					name:'UserInfo',
-					watchKey: '$store.state.userinfo',
-					deep: true,
-					onUpdate(val){
-						//userinfo里含有nickName则表示命中此钩子
-						return !!val.nickName;
-					}
-				}
-			})
-		}
 	})
-	//第三步，业务页面里使用插件（任何页面都可以使用，耦合度低，重复性代码少）：
-	onMountedUserInfo(){
+},
+mounted(){
+	//dom渲染完毕
+	this.num++;
+	if(this.num == 2){
 		//可以渲染canvas了
 		renderCanvas();
 	}
+},
 ```
 
-###函数说明
-####CustomHook.init
-####语法
+#### 使用vue-custom-hooks完成以上场景
+```javascript
+//第一步，安装插件：
+npm install vue-custom-hooks
+//第二步，main.js里注册插件：
+import CustomHook from 'vue-custom-hooks';
+Vue.use({
+	install(Vue) {
+		CustomHook.init(Vue,{
+			 'UserInfo':{
+				name:'UserInfo',
+				watchKey: '$store.state.userinfo',
+				deep: true,
+				onUpdate(val){
+					//userinfo里含有nickName则表示命中此钩子
+					return !!val.nickName;
+				}
+			}
+		})
+	}
+})
+//第三步，业务页面里使用插件（任何页面都可以使用，耦合度低，重复性代码少）：
+onMountedUserInfo(){
+	//可以渲染canvas了
+	renderCanvas();
+}
+
+```
+
+### 函数说明
+#### CustomHook.init
+
+#### 语法
 ````javascript
 import CustomHook from 'vue-custom-hooks';
 CustomHook.init(Vue,diyHooks)
 ````
-####diyHooks对象说明
+
+#### diyHooks对象说明
 ````javascript
 {
 	//1.注册属性监听钩子
@@ -144,7 +149,8 @@ CustomHook.init(Vue,diyHooks)
 	}
 }
 ````
-###使用说明
+
+### 使用说明
 ````javascript
 export default {
 	name: 'Home',
@@ -162,7 +168,8 @@ export default {
 	}
 }
 ````
-###钩子使用规则
+
+### 钩子使用规则
 ````javascript
 `on{UserInfo}{BeforeMount}{Login}{Position}` //所有注册的钩子都可以随意搭配，声明的顺序不影响钩子执行
 ````

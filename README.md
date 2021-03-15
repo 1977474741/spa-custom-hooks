@@ -1,12 +1,12 @@
 [TOC]
 
-#### vue-custom-hooks 是什么
+### vue-custom-hooks 是什么
 顾名思义，就是一个可以定制vue组件钩子的东西，你可以注册全局的异步任务，满足条件时即可自动执行页面里相关的钩子，可以和vue的原生钩子created，mounted等钩子随意搭配使用，核心逻辑类似于Promise.all，但不是用Promise实现的。
 
-#### 它能解决什么问题
+### 它能解决什么问题
 解决业务页面需要同时监听多个全局状态的问题
 
-#### 来点真实的场景吧
+### 来点真实的场景吧
 用户首次进入小程序需要在app.vue的onLaunch登录获取token和用户信息，然后存到store里。现在要做一个页面，进来把用户的头像昵称等渲染在canvas上，需求关键点在于两个条件都要满足。
 
 ###### 方案1、在页面里监听store是否拿到了用户信息&&dom树渲染完毕。
@@ -86,6 +86,7 @@ mounted(){
 ```javascript
 //第一步，安装插件：
 npm install vue-custom-hooks
+
 //第二步，main.js里注册插件：
 import CustomHook from 'vue-custom-hooks';
 Vue.use({
@@ -103,6 +104,7 @@ Vue.use({
 		})
 	}
 })
+
 //第三步，业务页面里使用插件（任何页面都可以使用，耦合度低，重复性代码少）：
 onMountedUserInfo(){
 	//可以渲染canvas了

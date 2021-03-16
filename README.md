@@ -1,4 +1,5 @@
 
+
 - [vue-custom-hooks 是什么？](#head1)
 - [ 它有什么用？](#head2)
 - [ 来点真实的场景吧](#head3)
@@ -11,22 +12,16 @@
 - [ 如何使用？](#head10)
 - [ 钩子使用规则](#head11)
 
-<hr style="border:solid; width:100px; height:1px;" color=#ddd size=1">
-
-### <span id="head1">vue-custom-hooks 是什么？</span>
+## <span id="head1">vue-custom-hooks 是什么？</span>
 - 一个可以定制vue组件钩子的东西，你可以注册全局的异步任务，满足条件时即可自动执行页面里相关的钩子。
 - 支持和vue的原生钩子created，mounted等随意搭配使用。
 - 支持传统h5、mpvue、uni-app
 
-<hr style="border:solid; width:100px; height:1px;" color=#ddd size=1">
-
-### <span id="head2"> 它有什么用？</span>
+## <span id="head2"> 它有什么用？</span>
 
 解决业务页面里需要同时监听多个全局状态的问题
 
-<hr style="border:solid; width:100px; height:1px;" color=#ddd size=1">
-
-### <span id="head3"> 来点真实的场景吧</span>
+## <span id="head3"> 来点真实的场景吧</span>
 用户首次进入小程序需要在app.vue的onLaunch登录获取token和用户信息，然后存到store里。现在要做一个页面，进来把用户的头像昵称等渲染在canvas上，需求关键点在于两个条件都要满足。
 
 ##### <span id="head4">方案1、在页面里监听store是否拿到了用户信息 && dom树渲染完毕。</span>
@@ -133,9 +128,7 @@ onMountedUserInfo(){
 
 ```
 
-<hr style="border:solid; width:100px; height:1px;" color=#ddd size=1">
-
-### <span id="head7"> 函数说明</span>
+## <span id="head7"> 函数说明</span>
 - #### <span id="head8"> CustomHook.init</span>
 ````javascript
 import CustomHook from 'vue-custom-hooks';
@@ -172,9 +165,7 @@ CustomHook.init(Vue,diyHooks)
 }
 ````
 
-<hr style="border:solid; width:100px; height:1px;" color=#ddd size=1">
-
-### <span id="head10"> 如何使用？</span>
+## <span id="head10"> 如何使用？</span>
 ````javascript
 export default {
     name: 'Home',
@@ -193,9 +184,7 @@ export default {
 }
 ````
 
-<hr style="border:solid; width:100px; height:1px;" color=#ddd size=1">
-
-### <span id="head11"> 钩子使用规则</span>
+## <span id="head11"> 钩子使用规则</span>
 ````javascript
 `on{UserInfo}{BeforeMount}{Login}{Position}...` //所有注册的钩子都可以随意搭配，声明的顺序不影响钩子执行
 ````

@@ -17,14 +17,14 @@ export default {
 	onLoginCreated(){
 		this.$store.commit('logs','onLoginCreated钩子执行(about.vue)');
 	},
-	onLoginMounted(){
-		this.$store.commit('logs','onLoginMounted钩子执行(about.vue)');
-	},
 	onUserInfoCreated(){
 		this.$store.commit('logs','onUserInfoCreated钩子执行(about.vue)');
 	},
 	onLoginUserInfoCreated(){
 		this.$store.commit('logs','onLoginUserInfoCreated钩子执行(about.vue)');
-	}
+	},
+	onLoginMounted(){
+		this.$store.commit('logs','onLoginMounted钩子执行(about.vue)');
+	},
 }
 </script>

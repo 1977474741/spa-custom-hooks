@@ -8,7 +8,10 @@
     "build": "vue-cli-service build"
   },
   "main": "/lib/vue-custom-hooks/index.js",
-  "repository": "https://github.com/1977474741/vue-custom-hooks.git",
+  "repository":{
+    "type": "git", 
+    "url": "https://github.com/1977474741/vue-custom-hooks.git"
+  },
   "npm": "https://www.npmjs.com/package/vue-custom-hooks",
   "dependencies": {
     "core-js": "^3.6.5",

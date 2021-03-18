@@ -21,6 +21,9 @@ export default new Vuex.Store({
 			   //  dom.scrollIntoView();
 		    // }
 		},
+		logClear(state){
+			state['logs'] = [];
+		},
 		userinfo(state, info) {
 		    state['userinfo'] = info;
 		},

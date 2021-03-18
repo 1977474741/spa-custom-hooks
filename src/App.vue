@@ -5,9 +5,9 @@
     <button @click="login">点击完成Login任务</button>
     <button @click="getUser">点击完成UserInfo任务</button>
     <router-view/>
-    <div id="nav">
-      <router-link :class="$route.name" to="/">Home</router-link> |
-      <router-link :class="$route.name" to="/about">About</router-link>
+    <div id="nav" :class="$route.name">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
     </div>
     <div class="logs">
       <div v-for="log in logs">
@@ -90,7 +90,9 @@ html,body{
   text-align: center;
   color: #2c3e50;
 }
-
+h1{
+  margin: 4vw 0 2vw;
+}
 .Home{
   color: #FAB87F;
 }
@@ -98,14 +100,19 @@ html,body{
   color: #B05574;
 }
 
-#nav a {
+#nav{
   font-weight: bold;
-  color: #2c3e50;
   font-size: 8vw;
 }
+#nav a{
+  color: #c1c1c1;
+}
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#nav.Home a.router-link-exact-active {
+  color: #FAB87F;
+}
+#nav.About a.router-link-exact-active {
+  color: #B05574;
 }
 .logs{
   overflow-y: auto;
@@ -121,9 +128,11 @@ p{
   margin: 0;
 }
 button{
-  width:40vw;
+  width:44vw;
+  display: inline-block;
   height: 8vw;
   margin: 2vw;
+  font-size: 3vw;
   margin-bottom: 0;
 }
 </style>

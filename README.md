@@ -1,5 +1,6 @@
 
 
+
 - [vue-custom-hooks 是什么？](#head1)
 - [ 它有什么用？](#head2)
 - [ 来点真实的场景吧](#head3)
@@ -11,6 +12,7 @@
     - [ diyHooks对象说明](#head9)
 - [ 如何使用？](#head10)
 - [ 钩子使用规则](#head11)
+- [ 已经内置的原生钩子](#head12)
 
 ## <span id="head1">vue-custom-hooks 是什么？</span>
 - 一个可以定制vue组件钩子的东西，你可以注册全局的异步任务，满足条件时即可自动执行页面里相关的钩子。
@@ -145,6 +147,8 @@ CustomHook.init(Vue,diyHooks)
         name:'UserInfo',
         //watchKey要监听的属性名，属性监听钩子模式必填
         watchKey: '$store.state.userinfo',
+        //是否默认命中,非必填
+        hit: false,
         //deep是否深度监听，非必填
         deep: true,
         //onUpdate属性改变时执行的callback，用来决定是否要命中此钩子，非必填，缺省值相当于返回了!!val
@@ -160,7 +164,9 @@ CustomHook.init(Vue,diyHooks)
         //name，原生钩子名，用来命中此钩子，必填
         name:'beforeMount',
         //destroy，相反的钩子名，用来取消命中，事件监听钩子必填
-        destroy:'destroyed'
+        destroy:'destroyed',
+        //是否默认命中,非必填
+        hit: false
     }
 }
 ````
@@ -186,8 +192,16 @@ export default {
 
 ## <span id="head11"> 钩子使用规则</span>
 ````javascript
-`on{UserInfo}{BeforeMount}{Login}{Position}...` //所有注册的钩子都可以随意搭配，声明的顺序不影响钩子执行
+`on{UserInfo}{BeforeMount}{Login}{Position}...` //所有注册好的钩子都可以随意搭配，排列顺序不影响钩子执行，都是 && 的关系
 ````
+
+## <span id="head12"> 已经注册好的原生钩子</span>
+````javascript
+Launch、Created、Load、Attached、Show、Mounted、Ready
+//↓↓↓如需其他的钩子可自行注册↓↓↓
+````
+- [ diyHooks对象说明](#head9)
+
 
 如果有什么好的建议欢迎提issues或者提pr
 

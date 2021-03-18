@@ -2,7 +2,8 @@
   "name": "vue-custom-hooks",
   "version": "1.0.3",
   "description": "基于vue的自定义钩子",
-  "author": "Api调用师 <1977474741@qq.com>",
+  "author": "鹅鹅鹅 <1977474741@qq.com>",
+  "homepage":".",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"

@@ -1,4 +1,5 @@
 
+
 - [vue-custom-hooks 是什么？](#head1)
 - [ 它有什么用？](#head2)
 - [ 来点真实的场景吧](#head3)
@@ -12,6 +13,7 @@
 - [ 钩子使用规则](#head11)
 - [ 已经内置的原生钩子](#head12)
 - [ Demo二维码](#head13)
+- [ 进群交流](#head14)
 
 ## <span id="head1">vue-custom-hooks 是什么？</span>
 - 一个可以定制vue组件钩子的东西，你可以注册全局的异步任务，满足条件时即可自动执行页面里相关的钩子。
@@ -204,7 +206,10 @@ Launch、Created、Load、Attached、Show、Mounted、Ready
 - [ diyHooks对象说明](#head9)
 
 ## <span id="head13"> Demo二维码</span>
-![enter image description here](https://pubser-res.zhenai.com/other/temp/202103/20/16460141027094.png?imageMogr2/thumbnail/200x200)
+![left image description here](https://pubser-res.zhenai.com/other/temp/202103/20/16460141027094.png?imageMogr2/thumbnail/200x200)
+    
+## <span id="head14"> 进群交流</span>
+![left image description here](https://pubser-res.zhenai.com/other/temp/202103/20/17024414117439.png?imageMogr2/thumbnail/203x203)
 
 如果有什么好的建议欢迎提issues或者提pr
 

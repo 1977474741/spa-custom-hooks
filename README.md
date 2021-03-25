@@ -1,4 +1,8 @@
+<div align="center">
 
+**简体中文 | [English](./README.EN.md)**
+
+</div>
 
 - [vue-custom-hooks 是什么？](#head1)
 - [ 它有什么用？](#head2)
@@ -213,4 +217,5 @@ Launch、Created、Load、Attached、Show、Mounted、Ready
 
 如果有什么好的建议欢迎提issues或者提pr
 
+喜欢的话点个star
 

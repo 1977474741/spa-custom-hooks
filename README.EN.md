@@ -15,9 +15,9 @@
 - [Into the group exchange](#head14)
 
 ## <span id="head1"> What is vue-custom-hooks? </span>
--A thing that can customize vue component hooks. You can register global asynchronous tasks and automatically execute related hooks in the page when the conditions are met.
--Supports the use of created, mounted, etc. with vue's native hooks.
--Support traditional h5, mpvue, uni-app
+- A thing that can customize vue component hooks. You can register global asynchronous tasks and automatically execute related hooks in the page when the conditions are met.
+- Supports the use of created, mounted, etc. with vue's native hooks.
+- Support traditional h5, mpvue, uni-app
 
 ## <span id="head2"> What is it for? </span>
 
@@ -133,13 +133,13 @@ onMountedUserInfo(){
 ```
 
 ## <span id="head7"> Function description</span>
--#### <span id="head8"> CustomHook.init</span>
+- #### <span id="head8"> CustomHook.init</span>
 ````javascript
 import CustomHook from'vue-custom-hooks';
 CustomHook.init(Vue, diyHooks)
 ````
 
--#### <span id="head9"> diyHooks object description</span>
+- #### <span id="head9"> diyHooks object description</span>
 ````javascript
 {
     //1. Register the attribute monitoring hook
@@ -202,7 +202,7 @@ export default {
 Launch, Created, Load, Attached, Show, Mounted, Ready
 //↓↓↓If you need other hooks, you can register by yourself↓↓↓
 ````
--[diyHooks object description](#head9)
+- [diyHooks object description](#head9)
 
 ## <span id="head13"> Demo QR code</span>
 ![left image description here](https://pubser-res.zhenai.com/other/temp/202103/20/16460141027094.png?imageMogr2/thumbnail/200x200)

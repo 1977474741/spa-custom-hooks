@@ -1,4 +1,8 @@
+<div align="center">
 
+**简体中文 | [English](./README.EN.md)**
+
+</div>
 
 - [vue-custom-hooks 是什么？](#head1)
 - [ 它有什么用？](#head2)

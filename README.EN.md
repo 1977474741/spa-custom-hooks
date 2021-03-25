@@ -1,3 +1,8 @@
+<div align="center">
+
+**English | [简体中文](./README.md)**
+
+</div>
 
 - [What is vue-custom-hooks? ](#head1)
 - [ what's it for? ](#head2)
@@ -12,7 +17,6 @@
 - [Hook usage rules](#head11)
 - [Built-in native hook](#head12)
 - [Demo QR Code](#head13)
-- [Into the group exchange](#head14)
 
 ## <span id="head1"> What is vue-custom-hooks? </span>
 - A thing that can customize vue component hooks. You can register global asynchronous tasks and automatically execute related hooks in the page when the conditions are met.
@@ -208,3 +212,4 @@ Launch, Created, Load, Attached, Show, Mounted, Ready
 ![left image description here](https://pubser-res.zhenai.com/other/temp/202103/20/16460141027094.png?imageMogr2/thumbnail/200x200)
     
 If you have any good suggestions, please raise issues or pr
+If you like, point a star

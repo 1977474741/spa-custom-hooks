@@ -6,5 +6,17 @@ module.exports={
 	    libraryTarget: 'umd',
 	    library: 'vue-custom-hooks',
 	    path: path.resolve(__dirname, 'lib/')
+	},
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: "babel-loader",
+				include: [
+		          path.resolve('lib/vue-custom-hooks/'),
+		        ],
+			}
+		]
 	}
 }

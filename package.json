@@ -1,13 +1,13 @@
 {
     "name": "vue-custom-hooks",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "基于vue的自定义钩子",
     "author": "鹅鹅鹅 <1977474741@qq.com>",
     "homepage": "https://github.com/1977474741/vue-custom-hooks.git",
     "scripts": {
         "serve": "webpack --config hook.config.js && vue-cli-service serve",
         "build": "webpack --config hook.config.js && vue-cli-service build",
-        "prepublish": "webpack --config hook.config.js"
+        "prepublishOnly": "webpack --config hook.config.js"
     },
     "main": "/lib/vue-custom-hooks.js",
     "repository": {

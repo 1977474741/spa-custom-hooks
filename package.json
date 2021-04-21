@@ -1,35 +1,36 @@
 {
-  "name": "vue-custom-hooks",
-  "version": "1.0.7",
-  "description": "基于vue的自定义钩子",
-  "author": "鹅鹅鹅 <1977474741@qq.com>",
-  "homepage":".",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
-  },
-  "main": "/lib/vue-custom-hooks/index.js",
-  "repository":{
-    "type": "git", 
-    "url": "https://github.com/1977474741/vue-custom-hooks.git"
-  },
-  "npm": "https://www.npmjs.com/package/vue-custom-hooks",
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
-  },
-  "files":[
-      "/lib/vue-custom-hooks/",
-      "/package.json",
-      "/README.md"
-  ],
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "vue-template-compiler": "^2.6.11"
-  }
+    "name": "vue-custom-hooks",
+    "version": "1.0.8",
+    "description": "基于vue的自定义钩子",
+    "author": "鹅鹅鹅 <1977474741@qq.com>",
+    "homepage": "https://github.com/1977474741/vue-custom-hooks.git",
+    "scripts": {
+        "serve": "webpack --config hook.config.js && vue-cli-service serve",
+        "build": "webpack --config hook.config.js && vue-cli-service build",
+        "prepublish": "webpack --config hook.config.js"
+    },
+    "main": "/lib/vue-custom-hooks.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/1977474741/vue-custom-hooks.git"
+    },
+    "npm": "https://www.npmjs.com/package/vue-custom-hooks",
+    "dependencies": {},
+    "files": [
+        "/lib/",
+        "/package.json",
+        "/README.md"
+    ],
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "~4.5.0",
+        "@vue/cli-plugin-router": "~4.5.0",
+        "@vue/cli-plugin-vuex": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "core-js": "^3.6.5",
+        "vue-template-compiler": "^2.6.11",
+        "vue": "^2.6.11",
+        "vue-router": "^3.2.0",
+        "vuex": "^3.4.0"
+    },
+    "license": "MIT"
 }

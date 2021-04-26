@@ -10,8 +10,8 @@
     - [方案1、在页面里监听store是否拿到了用户信息 && dom树渲染完毕。](#head4)
     - [ 方案2、在页面里去获取用户信息，同样需要判断两个条件是否都满足。](#head5)
 - [ 使用vue-custom-hooks实现以上场景](#head6)
-- [ 函数说明](#head7)
-    - [ CustomHook.init](#head8)
+- [ 注册参数说明](#head7)
+    - [ 注册CustomHook](#head8)
     - [ diyHooks对象说明](#head9)
 - [ 如何使用？](#head10)
 - [ 钩子使用规则](#head11)
@@ -113,19 +113,15 @@ npm install vue-custom-hooks
 
 //第二步，入口文件里注册插件：
 import CustomHook from 'vue-custom-hooks';
-Vue.use({
-    install(Vue) {
-        CustomHook.init(Vue,{
-             'UserInfo':{
-                name:'UserInfo',
-                watchKey: '$store.state.userinfo',
-                deep: true,
-                onUpdate(val){
-                    //userinfo里含有nickName则表示命中此钩子
-                    return !!val.nickName;
-                }
-            }
-        })
+Vue.use(CustomHook ,{
+     'UserInfo':{
+        name:'UserInfo',
+        watchKey: '$store.state.userinfo',
+        deep: true,
+        onUpdate(val){
+            //userinfo里含有nickName则表示命中此钩子
+            return !!val.nickName;
+        }
     }
 })
 
@@ -137,11 +133,11 @@ onMountedUserInfo(){
 
 ```
 
-## <span id="head7"> 函数说明</span>
-- #### <span id="head8"> CustomHook.init</span>
+## <span id="head7"> 注册参数说明</span>
+- #### <span id="head8"> 注册CustomHook</span>
 ````javascript
 import CustomHook from 'vue-custom-hooks';
-CustomHook.init(Vue,diyHooks)
+Vue.use(CustomHook,diyHooks)
 ````
 
 - #### <span id="head9"> diyHooks对象说明</span>

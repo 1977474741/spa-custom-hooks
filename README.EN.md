@@ -10,13 +10,14 @@
     - [Scheme 1, monitor whether the store has received user information in the page && dom tree rendering is complete. ](#head4)
     - [Option 2. To obtain user information on the page, it is also necessary to determine whether both conditions are met. ](#head5)
 - [Use vue-custom-hooks to achieve the above scenario](#head6)
-- [Function description](#head7)
-    - [CustomHook.init](#head8)
+- [Registration parameter description](#head7)
+    - [Register CustomHook](#head8)
     - [diyHooks object description](#head9)
 - [ how to use? ](#head10)
 - [Hook usage rules](#head11)
 - [Built-in native hook](#head12)
 - [Demo QR Code](#head13)
+- [Into the group exchange](#head14)
 
 ## <span id="head1"> What is vue-custom-hooks? </span>
 - A thing that can customize vue component hooks. You can register global asynchronous tasks and automatically execute related hooks in the page when the conditions are met.
@@ -25,10 +26,10 @@
 
 ## <span id="head2"> What is it for? </span>
 
-Solve the problem of needing to monitor multiple global states in the business page
+Solve the problem of needing to monitor multiple global states at the same time in the business page
 
 ## <span id="head3"> Let’s have some real scenes</span>
-To enter the Mini Program for the first time, users need to log in onLaunch of app.vue to obtain the token and user information, and then save it in the store. Now we are going to make a page, come in and render the user's avatar, nickname, etc. on the canvas. The key point is that two conditions must be met.
+To enter the Mini Program for the first time, users need to log in onLaunch of app.vue to obtain the token and user information, and then save it in the store. Now we are going to make a page, come in and render the user's avatar, nickname, etc. on the canvas. The key point is that the two conditions must be met.
 
 ##### <span id="head4">Scheme 1. Monitor on the page whether the store has received user information && dom tree rendering is complete. </span>
 ```javascript
@@ -111,20 +112,16 @@ mounted(){
 npm install vue-custom-hooks
 
 //The second step is to register the plug-in in the entry file:
-import CustomHook from'vue-custom-hooks';
-Vue.use({
-    install(Vue) {
-        CustomHook.init(Vue,{
-             'UserInfo':{
-                name:'UserInfo',
-                watchKey:'$store.state.userinfo',
-                deep: true,
-                onUpdate(val){
-                    //userinfo contains nickName, it means the hook is hit
-                    return !!val.nickName;
-                }
-            }
-        })
+import CustomHook from 'vue-custom-hooks';
+Vue.use(CustomHook ,{
+     'UserInfo':{
+        name:'UserInfo',
+        watchKey: '$store.state.userinfo',
+        deep: true,
+        onUpdate(val){
+            //userinfo里含有nickName则表示命中此钩子
+            return !!val.nickName;
+        }
     }
 })
 
@@ -136,11 +133,11 @@ onMountedUserInfo(){
 
 ```
 
-## <span id="head7"> Function description</span>
-- #### <span id="head8"> CustomHook.init</span>
+## <span id="head7"> Registration parameter description</span>
+- #### <span id="head8"> Register CustomHook</span>
 ````javascript
 import CustomHook from'vue-custom-hooks';
-CustomHook.init(Vue, diyHooks)
+Vue.use(CustomHook,diyHooks)
 ````
 
 - #### <span id="head9"> diyHooks object description</span>

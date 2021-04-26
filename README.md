@@ -10,8 +10,8 @@
     - [方案1、在页面里监听store是否拿到了用户信息 && dom树渲染完毕。](#head4)
     - [ 方案2、在页面里去获取用户信息，同样需要判断两个条件是否都满足。](#head5)
 - [ 使用vue-custom-hooks实现以上场景](#head6)
-- [ 函数说明](#head7)
-    - [ CustomHook.init](#head8)
+- [ 注册参数说明](#head7)
+    - [ 注册CustomHook](#head8)
     - [ diyHooks对象说明](#head9)
 - [ 如何使用？](#head10)
 - [ 钩子使用规则](#head11)
@@ -26,10 +26,10 @@
 
 ## <span id="head2"> 它有什么用？</span>
 
-解决业务页面里需要同时监听多个全局状态的问题
+用简单优雅的方式解决业务页面里需要同时监听多个全局状态的问题
 
 ## <span id="head3"> 来点真实的场景吧</span>
-用户首次进入小程序需要在app.vue的onLaunch登录获取token和用户信息，然后存到store里。现在要做一个页面，进来把用户的头像昵称等渲染在canvas上，需求关键点在于两个条件都要满足。
+用户首次进入小程序需要在app.vue的onLaunch登录获取token和用户信息（都是异步任务），然后存到store里。现在要做一个页面，进来把用户的头像昵称等渲染在canvas上，需求关键点在于两个条件都要满足。
 
 ##### <span id="head4">方案1、在页面里监听store是否拿到了用户信息 && dom树渲染完毕。</span>
 ```javascript
@@ -113,19 +113,15 @@ npm install vue-custom-hooks
 
 //第二步，入口文件里注册插件：
 import CustomHook from 'vue-custom-hooks';
-Vue.use({
-    install(Vue) {
-        CustomHook.init(Vue,{
-             'UserInfo':{
-                name:'UserInfo',
-                watchKey: '$store.state.userinfo',
-                deep: true,
-                onUpdate(val){
-                    //userinfo里含有nickName则表示命中此钩子
-                    return !!val.nickName;
-                }
-            }
-        })
+Vue.use(CustomHook ,{
+     'UserInfo':{
+        name:'UserInfo',
+        watchKey: '$store.state.userinfo',
+        deep: true,
+        onUpdate(val){
+            //userinfo里含有nickName则表示命中此钩子
+            return !!val.nickName;
+        }
     }
 })
 
@@ -137,11 +133,11 @@ onMountedUserInfo(){
 
 ```
 
-## <span id="head7"> 函数说明</span>
-- #### <span id="head8"> CustomHook.init</span>
+## <span id="head7"> 注册参数说明</span>
+- #### <span id="head8"> 注册CustomHook</span>
 ````javascript
 import CustomHook from 'vue-custom-hooks';
-CustomHook.init(Vue,diyHooks)
+Vue.use(CustomHook,diyHooks)
 ````
 
 - #### <span id="head9"> diyHooks对象说明</span>

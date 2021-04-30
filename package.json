@@ -7,6 +7,7 @@
     "scripts": {
         "serve": "webpack --config hook.config.js && vue-cli-service serve",
         "build": "webpack --config hook.config.js && vue-cli-service build",
+        "dev": "rollup --config rollup.config.js",
         "prepublishOnly": "webpack --config hook.config.js"
     },
     "main": "/lib/vue-custom-hooks.js",
@@ -15,19 +16,24 @@
         "url": "https://github.com/1977474741/vue-custom-hooks.git"
     },
     "npm": "https://www.npmjs.com/package/vue-custom-hooks",
-    "dependencies": {},
+    "dependencies": {
+    },
     "files": [
         "/lib/",
         "/package.json",
         "/README.md"
     ],
     "devDependencies": {
+        "babel-preset-es2015-rollup": "^3.0.0",
+        "rollup-plugin-babel": "^4.4.0",
+
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-router": "~4.5.0",
         "@vue/cli-plugin-vuex": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
-        "core-js": "^3.6.5",
         "vue-template-compiler": "^2.6.11",
+        
+        "core-js": "^3.6.5",
         "vue": "^2.6.11",
         "vue-router": "^3.2.0",
         "vuex": "^3.4.0"

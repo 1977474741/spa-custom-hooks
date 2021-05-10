@@ -14,17 +14,23 @@ export default {
 	mounted(){
 		this.$store.commit('logs','mounted钩子执行(about.vue)');
 	},
-	onLoginCreated(){
-		this.$store.commit('logs','onLoginCreated钩子执行(about.vue)');
+	onCreatedLogin(){
+		this.$store.commit('logs','onCreatedLogin钩子执行(about.vue)');
 	},
-	onUserInfoCreated(){
-		this.$store.commit('logs','onUserInfoCreated钩子执行(about.vue)');
+	onCreatedUserInfo(){
+		this.$store.commit('logs','onCreatedUserInfo钩子执行(about.vue)');
 	},
-	onLoginUserInfoCreated(){
-		this.$store.commit('logs','onLoginUserInfoCreated钩子执行(about.vue)');
+	onCreatedLoginUserInfo(){
+		this.$store.commit('logs','onCreatedLoginUserInfo钩子执行(about.vue)');
 	},
-	onLoginMounted(){
-		this.$store.commit('logs','onLoginMounted钩子执行(about.vue)');
+	onMountedLogin(){
+		this.$store.commit('logs','onMountedLogin钩子执行(about.vue)');
+	},
+	onMountedUserInfo(){
+		this.$store.commit('logs','onMountedUserInfo钩子执行(about.vue)');
+	},
+	onMountedLoginUserInfo(){
+		this.$store.commit('logs','onMountedLoginUserInfo钩子执行(about.vue)');
 	},
 }
 </script>

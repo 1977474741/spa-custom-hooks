@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 
 import CustomHook from '/lib/vue-custom-hooks/index.js';
+// import CustomHook from '/lib/vue-custom-hooks.js';
 Vue.use(CustomHook,{
 	'Login':{
         name:'Login',

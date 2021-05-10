@@ -1,14 +1,14 @@
 {
     "name": "vue-custom-hooks",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "基于vue的自定义钩子",
     "author": "鹅鹅鹅 <1977474741@qq.com>",
     "homepage": "https://github.com/1977474741/vue-custom-hooks.git",
     "scripts": {
-        "serve": "webpack --config hook.config.js && vue-cli-service serve",
-        "build": "webpack --config hook.config.js && vue-cli-service build",
+        "serve": "rollup --config rollup.config.js && vue-cli-service serve",
+        "build": "rollup --config rollup.config.js && vue-cli-service build",
         "dev": "rollup --config rollup.config.js",
-        "prepublishOnly": "webpack --config hook.config.js"
+        "prepublishOnly": "rollup --config rollup.config.js"
     },
     "main": "/lib/vue-custom-hooks.js",
     "repository": {
@@ -16,26 +16,25 @@
         "url": "https://github.com/1977474741/vue-custom-hooks.git"
     },
     "npm": "https://www.npmjs.com/package/vue-custom-hooks",
-    "dependencies": {
-    },
+    "dependencies": {},
     "files": [
         "/lib/",
         "/package.json",
         "/README.md"
     ],
     "devDependencies": {
-        "babel-preset-es2015-rollup": "^3.0.0",
-        "rollup-plugin-babel": "^4.4.0",
-
+        "@babel/preset-env": "^7.14.1",
+        "@rollup/plugin-babel": "^5.3.0",
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-router": "~4.5.0",
         "@vue/cli-plugin-vuex": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
-        "vue-template-compiler": "^2.6.11",
-        
+        "babel-preset-es2015-rollup": "^3.0.0",
         "core-js": "^3.6.5",
+        "rollup-plugin-uglify": "^6.0.4",
         "vue": "^2.6.11",
         "vue-router": "^3.2.0",
+        "vue-template-compiler": "^2.6.11",
         "vuex": "^3.4.0"
     },
     "license": "MIT"

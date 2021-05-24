@@ -1,5 +1,8 @@
 <div align="center">
-
+ <img src="https://pubser-res.zhenai.com/other/temp/202105/24/16494052710198.png?imageMogr2/thumbnail/436x"/>
+ 
+[![license](https://img.shields.io/badge/license-%20MIT-blue.svg)](https://github.com/1977474741/vue-custom-hooks/blob/main/LICENSE) [![license](https://img.shields.io/badge/npm-v1.1.1-yellow)](https://www.npmjs.com/package/vue-custom-hooks)
+ 
 **简体中文 | [English](./README.EN.md)**
 
 </div>

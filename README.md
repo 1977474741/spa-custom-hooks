@@ -119,14 +119,14 @@ import CustomHook from 'vue-custom-hooks';
 Vue.use(CustomHook ,{
      'UserInfo':{
         name:'UserInfo',
-        watchKey: '$store.state.userinfo',
+        watchKey: 'userinfo',
         deep: true,
         onUpdate(val){
             //userinfo里含有nickName则表示命中此钩子
             return !!val.nickName;
         }
     }
-})
+},store)
 
 //第三步，业务页面里使用插件（任何页面都可以使用，耦合度低，重复性代码少）：
 onMountedUserInfo(){
@@ -151,8 +151,8 @@ Vue.use(CustomHook,diyHooks)
     'UserInfo':{
         //name，钩子全称，监听属性的话可以和上面的key一致，必填
         name:'UserInfo',
-        //watchKey要监听的属性名，属性监听钩子模式必填
-        watchKey: '$store.state.userinfo',
+        //watchKey要监听的store里的属性名（相当于$store.state.userinfo），属性监听钩子模式必填
+        watchKey: 'userinfo',
         //是否默认命中,非必填
         hit: false,
         //deep是否深度监听，非必填

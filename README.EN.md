@@ -119,14 +119,14 @@ import CustomHook from 'vue-custom-hooks';
 Vue.use(CustomHook ,{
      'UserInfo':{
         name:'UserInfo',
-        watchKey: '$store.state.userinfo',
+        watchKey: 'userinfo',
         deep: true,
         onUpdate(val){
             //userinfo里含有nickName则表示命中此钩子
             return !!val.nickName;
         }
     }
-})
+},store)
 
 //The third step is to use plug-ins in business pages (any page can be used, with low coupling and less repetitive code):
 onMountedUserInfo(){
@@ -151,8 +151,8 @@ Vue.use(CustomHook,diyHooks)
     'UserInfo':{
         //name, the full name of the hook, it can be the same as the key above if the monitoring attribute is required, it is required
         name:'UserInfo',
-        //The name of the attribute to be monitored by watchKey, the attribute monitoring hook mode is required
-        watchKey:'$store.state.userinfo',
+        //The property name in the store to be monitored by watchkey (equivalent to $store.state.userinfo), the attribute monitoring hook mode is required
+        watchKey:'userinfo',
         //Whether to hit by default, not required
         hit: false,
         //deep Whether to monitor in depth, not required

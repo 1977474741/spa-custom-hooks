@@ -4,11 +4,10 @@ import router from './router'
 import store from './store'
 
 import CustomHook from '/lib/vue-custom-hooks/index.js';
-// import CustomHook from '/lib/vue-custom-hooks.js';
 Vue.use(CustomHook,{
 	'Login':{
         name:'Login',
-        watchKey: '$store.state.loginType',
+        watchKey: 'loginType',
         onUpdate(val){
             //loginType为true表示登录成功，可以触发此钩子
             return !!val;
@@ -16,7 +15,7 @@ Vue.use(CustomHook,{
     },
      'UserInfo':{
         name:'UserInfo',
-        watchKey: '$store.state.userinfo',
+        watchKey: 'userinfo',
         //需要监听userinfo对象下面的属性，所以开启deep
         deep: true,
         onUpdate(val){
@@ -24,8 +23,7 @@ Vue.use(CustomHook,{
             return !!val.name;
         }
     }
-})
-
+},store)
 Vue.config.productionTip = false
 new Vue({
   router,

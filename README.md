@@ -140,8 +140,9 @@ onMountedUserInfo(){
 ## <span id="head7"> 注册参数说明</span>
 - #### <span id="head8"> 注册CustomHook</span>
 ````javascript
+import store from './store'
 import CustomHook from 'vue-custom-hooks';
-Vue.use(CustomHook,diyHooks)
+Vue.use(CustomHook,diyHooks,store)
 ````
 
 - #### <span id="head9"> diyHooks对象说明</span>

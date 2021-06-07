@@ -139,8 +139,9 @@ onMountedUserInfo(){
 ## <span id="head7"> Registration parameter description</span>
 - #### <span id="head8"> Register CustomHook</span>
 ````javascript
+import store from './store'
 import CustomHook from'vue-custom-hooks';
-Vue.use(CustomHook,diyHooks)
+Vue.use(CustomHook,diyHooks,store)
 ````
 
 - #### <span id="head9"> diyHooks object description</span>

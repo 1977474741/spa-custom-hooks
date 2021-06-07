@@ -25,7 +25,7 @@
 ## <span id="head1"> What is vue-custom-hooks? </span>
 - A thing that can customize vue component hooks. You can register global asynchronous tasks and automatically execute related hooks in the page when the conditions are met.
 - Supports the use of created, mounted, etc. with vue's native hooks.
-- Support traditional h5, mpvue, uni-app
+- Support traditional h5、uni-app、wepy、mpvue
 
 ## <span id="head2"> What is it for? </span>
 
@@ -119,14 +119,14 @@ import CustomHook from 'vue-custom-hooks';
 Vue.use(CustomHook ,{
      'UserInfo':{
         name:'UserInfo',
-        watchKey: '$store.state.userinfo',
+        watchKey: 'userinfo',
         deep: true,
         onUpdate(val){
             //userinfo里含有nickName则表示命中此钩子
             return !!val.nickName;
         }
     }
-})
+},store)
 
 //The third step is to use plug-ins in business pages (any page can be used, with low coupling and less repetitive code):
 onMountedUserInfo(){
@@ -139,8 +139,9 @@ onMountedUserInfo(){
 ## <span id="head7"> Registration parameter description</span>
 - #### <span id="head8"> Register CustomHook</span>
 ````javascript
+import store from './store'
 import CustomHook from'vue-custom-hooks';
-Vue.use(CustomHook,diyHooks)
+Vue.use(CustomHook,diyHooks,store)
 ````
 
 - #### <span id="head9"> diyHooks object description</span>
@@ -151,8 +152,8 @@ Vue.use(CustomHook,diyHooks)
     'UserInfo':{
         //name, the full name of the hook, it can be the same as the key above if the monitoring attribute is required, it is required
         name:'UserInfo',
-        //The name of the attribute to be monitored by watchKey, the attribute monitoring hook mode is required
-        watchKey:'$store.state.userinfo',
+        //The property name in the store to be monitored by watchkey (equivalent to $store.state.userinfo), the attribute monitoring hook mode is required
+        watchKey:'userinfo',
         //Whether to hit by default, not required
         hit: false,
         //deep Whether to monitor in depth, not required
@@ -182,16 +183,26 @@ Vue.use(CustomHook,diyHooks)
 export default {
     name:'Home',
     created(){
-        //Data initialization is complete
+        //Page initialization is complete
     },
     mounted(){
         //dom rendering completed
     },
+    onLoginCreated(){
+        //Successful login (get the token) && page initialization completed
+        //Tips: Suitable for scenarios where the request sent by a page depends on the token
+    },
     onCreatedUserInfo(){
-        //Data initialization is complete && Obtaining user information is complete
+        //Page initialization is complete && Obtaining user information is complete
+        //Tips: Suitable for scenarios where user information needs to be used to make judgments when the page is initialized, and then go to the page logic
     },
     onMountedUserInfo(){
-        //dom rendering completed && access to user information completed
+        //dom rendering completed && access user information completed
+        //Tips: Suitable for similar scenes where the avatar needs to be rendered on canvas when entering the page for the first time
+    },
+    onReadyShow(){
+        //dom rendering completed && page display
+        //Tips: Suitable for scenarios where components or dom need to be obtained and executed every time the page is displayed
     }
 }
 ````
@@ -204,8 +215,9 @@ export default {
 ## <span id="head12"> Registered native hooks</span>
 ````javascript
 Launch, Created, Load, Attached, Show, Mounted, Ready
-//↓↓↓If you need other hooks, you can register by yourself↓↓↓
+//↓↓↓If you need other hooks, you can register by yourself↓↓↓(If a hook of the current framework and its corresponding opposite hook are inconsistent with the following configuration, you also need to manually register, for example, wepy has created but not destroyed)
 ````
+- [Detailed configuration of registered hooks](https://github.com/1977474741/vue-custom-hooks/blob/main/lib/vue-custom-hooks/hooks.js)
 - [diyHooks object description](#head9)
 
 ## <span id="head13"> Demo QR code</span>

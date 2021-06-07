@@ -1,3 +1,4 @@
+
 <div align="center">
  <img src="https://pubser-res.zhenai.com/other/temp/202105/24/16494052710198.png?imageMogr2/thumbnail/436x"/>
  
@@ -25,7 +26,7 @@
 ## <span id="head1">vue-custom-hooks 是什么？</span>
 - 一个可以定制vue组件钩子的东西，你可以注册全局的异步任务，满足条件时即可自动执行页面里相关的钩子。
 - 支持和vue的原生钩子created，mounted等随意搭配使用。
-- 支持传统h5、mpvue、uni-app
+- 支持传统h5、uni-app、wepy、mpvue
 
 ## <span id="head2"> 它有什么用？</span>
 
@@ -119,14 +120,14 @@ import CustomHook from 'vue-custom-hooks';
 Vue.use(CustomHook ,{
      'UserInfo':{
         name:'UserInfo',
-        watchKey: '$store.state.userinfo',
+        watchKey: 'userinfo',
         deep: true,
         onUpdate(val){
             //userinfo里含有nickName则表示命中此钩子
             return !!val.nickName;
         }
     }
-})
+},store)
 
 //第三步，业务页面里使用插件（任何页面都可以使用，耦合度低，重复性代码少）：
 onMountedUserInfo(){
@@ -139,8 +140,9 @@ onMountedUserInfo(){
 ## <span id="head7"> 注册参数说明</span>
 - #### <span id="head8"> 注册CustomHook</span>
 ````javascript
+import store from './store'
 import CustomHook from 'vue-custom-hooks';
-Vue.use(CustomHook,diyHooks)
+Vue.use(CustomHook,diyHooks,store)
 ````
 
 - #### <span id="head9"> diyHooks对象说明</span>
@@ -151,8 +153,8 @@ Vue.use(CustomHook,diyHooks)
     'UserInfo':{
         //name，钩子全称，监听属性的话可以和上面的key一致，必填
         name:'UserInfo',
-        //watchKey要监听的属性名，属性监听钩子模式必填
-        watchKey: '$store.state.userinfo',
+        //watchKey要监听的store里的属性名（相当于$store.state.userinfo），属性监听钩子模式必填
+        watchKey: 'userinfo',
         //是否默认命中,非必填
         hit: false,
         //deep是否深度监听，非必填
@@ -182,17 +184,27 @@ Vue.use(CustomHook,diyHooks)
 export default {
     name: 'Home',
     created(){
-        //数据初始化完成
+        //页面初始化完成
     },
     mounted(){
         //dom渲染完成
     },
+    onLoginCreated(){
+        //登录成功（拿到token） && 页面初始化完成
+        //Tips：适用于某页面发送的请求依赖token的场景
+    },
     onCreatedUserInfo(){
-        //数据初始化完成 && 获取用户信息完成
+        //页面初始化完成 && 获取用户信息完成
+        //Tips：适用于页面初始化时需要用到用户信息去做判断再走页面逻辑的场景
     },
     onMountedUserInfo(){
         //dom渲染完成 && 获取用户信息完成
-    }
+        //Tips：适用于首次进入页面需要在canvas上渲染头像的类似场景
+    },
+    onReadyShow(){
+        //dom渲染完成 && 页面显示
+        //Tips：适用于需要获取组件或者dom，并且每次页面显示都会执行的场景
+    },
 }
 ````
 
@@ -204,8 +216,9 @@ export default {
 ## <span id="head12"> 已经注册好的原生钩子</span>
 ````javascript
 Launch、Created、Load、Attached、Show、Mounted、Ready
-//↓↓↓如需其他的钩子可自行注册↓↓↓
+//↓↓↓如需其他的钩子可自行注册↓↓↓（如果当前框架的某钩子和其对应的相反钩子跟如下配置不一致也需要手动注册，比如wepy有created但没有destroyed）
 ````
+- [已注册的钩子详细配置](https://github.com/1977474741/vue-custom-hooks/blob/main/lib/vue-custom-hooks/hooks.js)
 - [ diyHooks对象说明](#head9)
 
 ## <span id="head13"> Demo二维码</span>

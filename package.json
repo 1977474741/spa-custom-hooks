@@ -1,6 +1,6 @@
 {
     "name": "vue-custom-hooks",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "基于vue的自定义钩子",
     "author": "鹅鹅鹅 <1977474741@qq.com>",
     "homepage": "https://github.com/1977474741/vue-custom-hooks.git",
@@ -31,7 +31,7 @@
         "@vue/cli-service": "~4.5.0",
         "babel-preset-es2015-rollup": "^3.0.0",
         "core-js": "^3.6.5",
-        "rollup-plugin-uglify": "^6.0.4",
+        "rollup-plugin-terser": "^7.0.2",
         "vue": "^2.6.11",
         "vue-router": "^3.2.0",
         "vue-template-compiler": "^2.6.11",

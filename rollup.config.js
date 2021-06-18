@@ -1,5 +1,5 @@
 import { babel } from '@rollup/plugin-babel';
-import { uglify } from "rollup-plugin-uglify"
+import { terser } from "rollup-plugin-terser"
 export default {
   input: 'lib/vue-custom-hooks/index.js',
   output: {
@@ -8,15 +8,12 @@ export default {
     format: 'umd',
   },
   plugins: [
-	  babel({
-      // presets: [
-      //   ['@babel/preset-env',
-      //   {
-      //     "modules": false,
-      //     "useBuiltIns": "entry",
-      //   }]
-      // ]
-    }),
-	  uglify()
-  ],
+	  babel(),
+	  terser({
+      compress:{
+        pure_funcs: ['console.log'],
+
+      }
+    })
+  ]
 };

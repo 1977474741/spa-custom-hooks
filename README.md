@@ -2,8 +2,8 @@
 <div align="center">
  <img src="https://pubser-res.zhenai.com/other/temp/202105/24/16494052710198.png?imageMogr2/thumbnail/436x"/>
  
-[![license](https://img.shields.io/badge/license-%20MIT-blue.svg)](https://github.com/1977474741/vue-custom-hooks/blob/main/LICENSE) [![license](https://img.shields.io/badge/npm-v1.1.1-yellow)](https://www.npmjs.com/package/vue-custom-hooks)
- 
+[![license](https://img.shields.io/badge/license-%20MIT-blue.svg)](https://github.com/1977474741/vue-custom-hooks/blob/main/LICENSE) [![license](https://img.shields.io/npm/v/vue-custom-hooks?color=red)](https://www.npmjs.com/package/vue-custom-hooks) [![license](https://img.shields.io/bundlephobia/min/vue-custom-hooks)](https://www.npmjs.com/package/vue-custom-hooks) [![license](https://img.shields.io/github/last-commit/1977474741/vue-custom-hooks)](https://github.com/1977474741/vue-custom-hooks/commits/main) [![license](https://img.shields.io/github/stars/1977474741?style=social)](https://github.com/1977474741)
+
 **简体中文 | [English](./README.EN.md)**
 
 </div>

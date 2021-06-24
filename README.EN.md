@@ -1,128 +1,70 @@
+
 <div align="center">
- <img src="https://pubser-res.zhenai.com/other/temp/202105/24/16494052710198.png?imageMogr2/thumbnail/436x"/>
- 
-[![license](https://img.shields.io/badge/license-%20MIT-blue.svg)](https://github.com/1977474741/vue-custom-hooks/blob/main/LICENSE) [![license](https://img.shields.io/npm/v/vue-custom-hooks?color=red)](https://www.npmjs.com/package/vue-custom-hooks) [![license](https://img.shields.io/bundlephobia/min/vue-custom-hooks)](https://www.npmjs.com/package/vue-custom-hooks) [![license](https://img.shields.io/github/last-commit/1977474741/vue-custom-hooks)](https://github.com/1977474741/vue-custom-hooks/commits/main) [![license](https://img.shields.io/github/stars/1977474741?style=social)](https://github.com/1977474741)
+<img src="https://pubser-res.zhenai.com/other/temp/202105/24/16494052710198.png?imageMogr2/thumbnail/436x"/>
 
-**English | [简体中文](./README.md)**
+[![license](https://img.shields.io/badge/license-%20MIT-blue.svg)](https://github.com/1977474741/vue-custom-hooks/blob/main/LICENSE ) [![license](https://img.shields.io/npm/v/vue-custom-hooks?color=red)](https://www.npmjs.com/package/vue-custom-hooks ) [![license](https://img.shields.io/bundlephobia/min/vue-custom-hooks)](https://www.npmjs.com/package/vue-custom-hooks) [![ license](https://img.shields.io/github/last-commit/1977474741/vue-custom-hooks)](https://github.com/1977474741/vue-custom-hooks/commits/main) [ ![license](https://img.shields.io/github/stars/1977474741?style=social)](https://github.com/1977474741)
 
+**Simplified Chinese | [English](./README.EN.md)**
 </div>
 
 - [What is vue-custom-hooks? ](#head1)
 - [ what's it for? ](#head2)
-- [Let’s have some real scenes](#head3)
-    - [Scheme 1, monitor whether the store has received user information in the page && dom tree rendering is complete. ](#head4)
-    - [Option 2. To obtain user information on the page, it is also necessary to determine whether both conditions are met. ](#head5)
-- [Use vue-custom-hooks to achieve the above scenario](#head6)
-- [Registration parameter description](#head7)
-    - [Register CustomHook](#head8)
-    - [diyHooks object description](#head9)
-- [ how to use? ](#head10)
-- [Hook usage rules](#head11)
-- [Built-in native hook](#head12)
-- [Demo QR Code](#head13)
-- [Into the group exchange](#head14)
+- [Common application scenarios](#head3)
+- [Example of use](#head4)
+- [Registration parameter description](#head5)
+    - [Register CustomHook](#head6)
+    - [diyHooks object description](#head7)
+- [Hook usage rules](#head8)
+- [Registered native hook](#head9)
+- [Demo QR Code](#head10)
+- [Into the group exchange](#head11)
 
 ## <span id="head1"> What is vue-custom-hooks? </span>
-- A thing that can customize vue component hooks. You can register global asynchronous tasks and automatically execute related hooks in the page when the conditions are met.
+- A thing that can customize vue component hooks, you can register global asynchronous tasks, define the triggering conditions of the hooks yourself, and automatically execute the relevant hooks in the page when the conditions are met.
 - Supports the use of created, mounted, etc. with vue's native hooks.
-- Support traditional h5、uni-app、wepy、mpvue
+- Support traditional h5, uni-app, wepy, mpvue
 
 ## <span id="head2"> What is it for? </span>
 
-Solve the problem of needing to monitor multiple global states at the same time in the business page
+Use a simple and elegant way to solve the problem of monitoring multiple global states in the business page at the same time
 
-## <span id="head3"> Let’s have some real scenes</span>
-To enter the Mini Program for the first time, users need to log in onLaunch of app.vue to obtain the token and user information, and then save it in the store. Now we are going to make a page, come in and render the user's avatar, nickname, etc. on the canvas. The key point is that the two conditions must be met.
-
-##### <span id="head4">Scheme 1. Monitor on the page whether the store has received user information && dom tree rendering is complete. </span>
-```javascript
-//Disadvantages: more troublesome, high coupling, the pages used have to monitor the changes of userinfo and the rendering of the dom tree, there are many repetitive codes, which is not conducive to maintenance
-data(){
-    return{
-        //Number of tasks completed
-        num: 0
-    }
-},
-computed: {
-    userInfo: function(){
-        return this.$store.state.userInfo
-},
-watch:{
-    userInfo(newval,oldval){
-        //Listen to get user information
-        if(newval.nickName){
-            this.num++;
-            if(this.num == 2){
-                //Can render the canvas
-                renderCanvas();
-            }
-        }
-    }
-},
-mounted(){
-    //dom rendering completed
-    this.num++;
-    if(this.num == 2){
-        //Can render the canvas
-        renderCanvas();
-    }
+## <span id="head3"> Common application scenarios</span>
+````javascript
+export default {
+    name:'Home',
+    onCreatedLogin(){
+        //Successful login (get the token) && page initialization completed
+        //Tips: Suitable for scenarios where the request sent by a page depends on the token
+    },
+    onCreatedUserInfo(){
+        //Page initialization is complete && Obtaining user information is complete
+        //Tips: Suitable for scenarios where user information needs to be used to make judgments when the page is initialized, and then go to the page logic
+    },
+    onMountedUserInfo(){
+        //dom rendering completed && access user information completed
+        //Tips: Suitable for similar scenes where the avatar needs to be rendered on canvas when entering the page for the first time
+    },
+    onMountedShow(){
+        //dom rendering completed && page display
+        //Tips: Suitable for scenarios where components or dom need to be obtained and executed every time the page is displayed
+    },
 }
-```
+````
 
-##### <span id="head5"> Solution 2. Get user information on the page && dom tree rendering is complete. </span>
-```javascript
-//Disadvantages: similar to solution 1, the pages used have to write methods for obtaining user information and monitor the rendering of the dom tree
-data(){
-    return{
-        //Number of tasks completed
-        num: 0
-    }
-},
-computed: {
-    userInfo: function(){
-        return this.$store.state.userInfo
-},
-methods:{
-    getUserInfo(cb){
-        //Initiate a request to obtain user information
-        let userinfo = {nickName:'Zhang San'};
-        this.$store.commit('userinfo',userinfo);
-        cb()
-    }
-},
-created(){
-    this.getUserInfo(()=>{
-        this.num++;
-        if(this.num == 2){
-            //Can render the canvas
-            renderCanvas();
-        }
-    })
-},
-mounted(){
-    //dom rendering completed
-    this.num++;
-    if(this.num == 2){
-        //Can render the canvas
-        renderCanvas();
-    }
-},
-```
-
-#### <span id="head6"> Use vue-custom-hooks to achieve the above scenarios</span>
+## <span id="head4"> Usage example</span>
 ```javascript
 //The first step is to install the plug-in:
 npm install vue-custom-hooks
 
 //The second step is to register the plug-in in the entry file:
-import CustomHook from 'vue-custom-hooks';
+import CustomHook from'vue-custom-hooks';
 Vue.use(CustomHook ,{
      'UserInfo':{
         name:'UserInfo',
-        watchKey: 'userinfo',
+        watchKey:'userinfo',
         deep: true,
         onUpdate(val){
-            //userinfo里含有nickName则表示命中此钩子
+            //userinfo contains nickName, it means the hook is hit
             return !!val.nickName;
         }
     }
@@ -133,26 +75,25 @@ onMountedUserInfo(){
     //Can render the canvas
     renderCanvas();
 }
-
 ```
 
-## <span id="head7"> Registration parameter description</span>
-- #### <span id="head8"> Register CustomHook</span>
+## <span id="head5"> Registration parameter description</span>
+#### <span id="head6"> Sign up for CustomHook</span>
 ````javascript
-import store from './store'
+import store from'./store'
 import CustomHook from'vue-custom-hooks';
 Vue.use(CustomHook,diyHooks,store)
 ````
 
-- #### <span id="head9"> diyHooks object description</span>
+#### <span id="head7"> diyHooks object description</span>
 ````javascript
 {
     //1. Register the attribute monitoring hook
-    //UserInfo, the single name of the hook, the first letter is capitalized
+    //UserInfo, the hook list name, with the first letter capitalized
     'UserInfo':{
         //name, the full name of the hook, it can be the same as the key above if the monitoring attribute is required, it is required
         name:'UserInfo',
-        //The property name in the store to be monitored by watchkey (equivalent to $store.state.userinfo), the attribute monitoring hook mode is required
+        //The attribute name in the store to be monitored by watchKey (equivalent to $store.state.userinfo), the attribute monitoring hook mode is required
         watchKey:'userinfo',
         //Whether to hit by default, not required
         hit: false,
@@ -178,51 +119,25 @@ Vue.use(CustomHook,diyHooks,store)
 }
 ````
 
-## <span id="head10"> How to use? </span>
-````javascript
-export default {
-    name:'Home',
-    created(){
-        //Page initialization is complete
-    },
-    mounted(){
-        //dom rendering completed
-    },
-    onLoginCreated(){
-        //Successful login (get the token) && page initialization completed
-        //Tips: Suitable for scenarios where the request sent by a page depends on the token
-    },
-    onCreatedUserInfo(){
-        //Page initialization is complete && Obtaining user information is complete
-        //Tips: Suitable for scenarios where user information needs to be used to make judgments when the page is initialized, and then go to the page logic
-    },
-    onMountedUserInfo(){
-        //dom rendering completed && access user information completed
-        //Tips: Suitable for similar scenes where the avatar needs to be rendered on canvas when entering the page for the first time
-    },
-    onReadyShow(){
-        //dom rendering completed && page display
-        //Tips: Suitable for scenarios where components or dom need to be obtained and executed every time the page is displayed
-    }
-}
-````
-
-## <span id="head11"> Hook usage rules</span>
+## <span id="head8"> Hook usage rules</span>
 ````javascript
 `on{UserInfo}{BeforeMount}{Login}{Position}...` //All registered hooks can be matched at will, the arrangement order does not affect the execution of the hooks, they are all in && relationship
 ````
 
-## <span id="head12"> Registered native hooks</span>
+## <span id="head9"> Registered native hooks</span>
 ````javascript
 Launch, Created, Load, Attached, Show, Mounted, Ready
 //↓↓↓If you need other hooks, you can register by yourself↓↓↓(If a hook of the current framework and its corresponding opposite hook are inconsistent with the following configuration, you also need to manually register, for example, wepy has created but not destroyed)
 ````
 - [Detailed configuration of registered hooks](https://github.com/1977474741/vue-custom-hooks/blob/main/lib/vue-custom-hooks/hooks.js)
-- [diyHooks object description](#head9)
+- [diyHooks object description](#head7)
 
-## <span id="head13"> Demo QR code</span>
+## <span id="head10"> Demo QR code</span>
 ![left image description here](https://pubser-res.zhenai.com/other/temp/202103/20/16460141027094.png?imageMogr2/thumbnail/200x200)
-    
+
+## <span id="head11"> Join group communication</span>
+![left image description here](https://pubser-res.zhenai.com/other/temp/202103/20/17024414117439.png?imageMogr2/thumbnail/203x203)
+
 If you have any good suggestions, please raise issues or pr
 
-If you like, point a star
+Click a star if you like

@@ -76,7 +76,7 @@ export default class customHook {
                         if(this.hook[h]){
                             return true;
                         }
-                        console.warn(`[custom-hook 错误声明警告] "${h}"钩子未注册，意味着"${e}"可能永远不会执行，请先注册此钩子再使用，文档：https://github.com/1977474741/vue-custom-hooks#-diyhooks对象说明`);
+                        console.warn(`[custom-hook 错误声明警告] "${h}"钩子未注册，意味着"${e}"可能永远不会执行，请先注册此钩子再使用，文档：https://github.com/1977474741/spa-custom-hooks#-diyhooks对象说明`);
                         return false;
                     });
                     //格式 + 是否注册的效验

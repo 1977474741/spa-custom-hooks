@@ -38,7 +38,7 @@
     "compileType": "miniprogram",
     "libVersion": "2.19.4",
     "appid": "wx5a22ae6ea8bdc1ee",
-    "projectname": "vue-custom-hooks",
+    "projectname": "spa-custom-hooks",
     "debugOptions": {
         "hidedInDevtools": []
     },

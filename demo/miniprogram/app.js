@@ -1,4 +1,4 @@
-import CustomHook from 'utils/vue-custom-hooks/index.js';
+import CustomHook from 'utils/spa-custom-hooks/index.js';
 let globalData = {
   // 是否已拿到token
   token: '',

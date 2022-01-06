@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import CustomHook from '/lib/vue-custom-hooks/index.js';
+import CustomHook from '/lib/spa-custom-hooks/index.js';
 Vue.use(CustomHook,{
 	'Login':{
         name:'Login',

@@ -1,21 +1,21 @@
 {
-    "name": "vue-custom-hooks",
-    "version": "1.1.6",
-    "description": "基于vue的自定义钩子",
+    "name": "spa-custom-hooks",
+    "version": "1.2.0",
+    "description": "单页应用的自定义钩子，支持vue架构和各种小程序",
     "author": "鹅鹅鹅 <1977474741@qq.com>",
-    "homepage": "https://github.com/1977474741/vue-custom-hooks.git",
+    "homepage": "https://github.com/1977474741/spa-custom-hooks.git",
     "scripts": {
         "serve": "rollup --config rollup.config.js && vue-cli-service serve",
         "build": "rollup --config rollup.config.js && vue-cli-service build",
         "dev": "rollup --config rollup.config.js -w",
         "prepublishOnly": "rollup --config rollup.config.js"
     },
-    "main": "/lib/vue-custom-hooks.js",
+    "main": "/lib/spa-custom-hooks.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/1977474741/vue-custom-hooks.git"
+        "url": "https://github.com/1977474741/spa-custom-hooks.git"
     },
-    "npm": "https://www.npmjs.com/package/vue-custom-hooks",
+    "npm": "https://www.npmjs.com/package/spa-custom-hooks",
     "dependencies": {},
     "files": [
         "/lib/",

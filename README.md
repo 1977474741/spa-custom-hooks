@@ -1,13 +1,15 @@
 
-<div align="center">
-<img src="https://pubser-res.zhenai.com/other/temp/202105/24/16494052710198.png?imageMogr2/thumbnail/436x"/>
 
-[![license](https://img.shields.io/badge/license-%20MIT-blue.svg)](https://github.com/1977474741/vue-custom-hooks/blob/main/LICENSE) [![license](https://img.shields.io/npm/v/vue-custom-hooks?color=red)](https://www.npmjs.com/package/vue-custom-hooks) [![license](https://img.shields.io/bundlephobia/min/vue-custom-hooks)](https://www.npmjs.com/package/vue-custom-hooks) [![license](https://img.shields.io/github/last-commit/1977474741/vue-custom-hooks)](https://github.com/1977474741/vue-custom-hooks/commits/main) [![license](https://img.shields.io/github/stars/1977474741?style=social)](https://github.com/1977474741)
+<div align="center">
+<img src="https://photo.zastatic.com/images/common-cms/it/20220106/1641464912638_340742_t.png"/>
+<h1 align="center"> spa-custom-hooks </h1>
+
+[![license](https://img.shields.io/badge/license-%20MIT-blue.svg)](https://github.com/1977474741/spa-custom-hooks/blob/main/LICENSE) [![license](https://img.shields.io/npm/v/spa-custom-hooks?color=red)](https://www.npmjs.com/package/spa-custom-hooks) [![license](https://img.shields.io/bundlephobia/min/spa-custom-hooks)](https://www.npmjs.com/package/spa-custom-hooks) [![license](https://img.shields.io/github/last-commit/1977474741/spa-custom-hooks)](https://github.com/1977474741/spa-custom-hooks/commits/main) [![license](https://img.shields.io/github/stars/1977474741?style=social)](https://github.com/1977474741)
 
 **简体中文 | [English](./README.EN.md)**
 </div>
 
-- [vue-custom-hooks 是什么？](#head1)
+- [spa-custom-hooks 是什么？](#head1)
 - [ 它有什么用？](#head2)
 - [ 常见应用场景](#head3)
 - [ 使用示例](#head4)
@@ -19,14 +21,14 @@
 - [ Demo二维码](#head10)
 - [ 进群交流](#head11)
 
-## <span id="head1">vue-custom-hooks 是什么？</span>
-- 一个可以定制vue组件钩子的东西，你可以注册全局的异步任务，自己定义钩子的触发条件，满足条件时即可自动执行页面里相关的钩子。
+## <span id="head1">spa-custom-hooks 是什么？</span>
+- 一个可以定制页面钩子的东西，你可以注册全局的异步任务，自己定义钩子的触发条件，满足条件时即可自动执行页面里相关的钩子。
 - 支持和vue的原生钩子created，mounted等随意搭配使用。
-- 支持传统h5、uni-app、wepy、mpvue（理论上支持所有基于vue的框架）。
+- 支持vue架构（包括uni-app、wepy、mpvue等）以及各种小程序。
 
 ## <span id="head2"> 它有什么用？</span>
 
-用简单优雅的方式解决业务页面里需要同时监听多个全局状态的问题
+用简单优雅的方式解决页面逻辑依赖全局异步数据的问题
 
 ## <span id="head3"> 常见应用场景</span>
 ````javascript
@@ -44,9 +46,9 @@ export default {
         //dom渲染完成 && 获取用户信息完成
         //Tips：适用于首次进入页面需要在canvas上渲染头像的类似场景
     },
-    onMountedShow(){
-        //dom渲染完成 && 页面显示
-        //Tips：适用于需要获取组件或者dom，并且每次页面显示都会执行的场景
+    onReadyShow(){
+        //小程序内页面渲染完成 && 页面显示
+        //Tips：适用于需要获取小程序组件或者dom，并且每次页面显示都会执行的场景
     },
 }
 ````
@@ -54,24 +56,35 @@ export default {
 ## <span id="head4"> 使用示例</span>
 ```javascript
 //第一步，安装插件：
-npm install vue-custom-hooks
+npm install spa-custom-hooks
 
 //第二步，入口文件里注册插件：
-import CustomHook from 'vue-custom-hooks';
-Vue.use(CustomHook ,{
+import CustomHook from 'spa-custom-hooks';
+const diyHooks = {
      'UserInfo':{
         name:'UserInfo',
         watchKey: 'userinfo',
         deep: true,
         onUpdate(val){
-            //userinfo里含有nickName则表示命中此钩子
+            //userinfo里的nickName非空则表示命中此钩子
             return !!val.nickName;
         }
     }
-},store)
+}
+//1.vue架构的注册方式
+import store from  './store'
+Vue.use(CustomHook ,diyHooks,store)
+//2.原生小程序的注册方式
+//提前定义globalData
+const globalData = {
+    userInfo: {
+        nickName: ''
+    }
+}
+CustomHook.install(diyHooks,globalData)
 
 //第三步，业务页面里使用插件（任何页面都可以使用，耦合度低，重复性代码少）：
-onMountedUserInfo(){
+onLoadUserInfo(){
     //可以渲染canvas了
     renderCanvas();
 }
@@ -80,9 +93,13 @@ onMountedUserInfo(){
 ## <span id="head5"> 注册参数说明</span>
 #### <span id="head6"> 注册CustomHook</span>
 ````javascript
+//vue架构-main.js
 import store from './store'
-import CustomHook from 'vue-custom-hooks';
+import CustomHook from 'spa-custom-hooks';
 Vue.use(CustomHook,diyHooks,store)
+//原生小程序架构-app.js
+import CustomHook from 'spa-custom-hooks';
+CustomHook.install(diyHooks,globalData)
 ````
 
 #### <span id="head7"> diyHooks对象说明</span>
@@ -124,12 +141,12 @@ Vue.use(CustomHook,diyHooks,store)
 `on{UserInfo}{BeforeMount}{Login}{Position}...` //所有注册好的钩子都可以随意搭配，排列顺序不影响钩子执行，都是 && 的关系
 ````
 
-## <span id="head9"> 已经注册好的原生钩子</span>
+## <span id="head9"> 已经注册好的生命周期钩子</span>
 ````javascript
 Launch、Created、Load、Attached、Show、Mounted、Ready
 //↓↓↓如需其他的钩子可自行注册↓↓↓（如果当前框架的某钩子和其对应的相反钩子跟如下配置不一致也需要手动注册，比如wepy有created但没有destroyed）
 ````
-- [已注册的钩子详细配置](https://github.com/1977474741/vue-custom-hooks/blob/main/lib/vue-custom-hooks/hooks.js)
+- [已注册的钩子详细配置](https://github.com/1977474741/spa-custom-hooks/blob/main/lib/spa-custom-hooks/hooks.js)
 - [ diyHooks对象说明](#head7)
 
 ## <span id="head10"> Demo二维码</span>

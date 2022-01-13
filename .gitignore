@@ -2,7 +2,7 @@
 node_modules
 desktop.ini
 package-lock.json
-
+demo/h5
 # local env files
 .env.local
 .env.*.local

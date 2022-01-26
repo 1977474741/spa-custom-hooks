@@ -1,0 +1,16 @@
+{
+    "name": "spa-custom-hooks-demo",
+    "version": "1.0.0",
+    "description": "单页应用的自定义钩子，支持vue架构和各种小程序",
+    "author": "鹅鹅鹅 <1977474741@qq.com>",
+    "homepage": "https://github.com/1977474741/spa-custom-hooks.git",
+    "dependencies": {
+        "spa-custom-hooks": "^1.2.2"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/1977474741/spa-custom-hooks.git"
+    },
+    "license": "MIT"
+}

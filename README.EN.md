@@ -77,7 +77,7 @@ Vue.use(CustomHook ,diyHooks,store)
 //2. Registration method of native applet
 //Define globalData in advance
 const globalData = {
-    userInfo: {
+    userinfo: {
         nickName:''
     }
 }

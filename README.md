@@ -77,7 +77,7 @@ Vue.use(CustomHook ,diyHooks,store)
 //2.原生小程序的注册方式
 //提前定义globalData
 const globalData = {
-    userInfo: {
+    userinfo: {
         nickName: ''
     }
 }

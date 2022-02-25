@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    motto: '注意看控制台console',
   },
   // 事件处理函数
   bindViewTap() {

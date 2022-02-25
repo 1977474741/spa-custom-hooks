@@ -1,5 +1,6 @@
 
 
+
 <div align="center">
 <img src="https://photo.zastatic.com/images/common-cms/it/20220106/1641464912638_340742_t.png"/>
 <h1 align="center"> spa-custom-hooks </h1>
@@ -54,6 +55,7 @@ export default {
 ````
 
 ## <span id="head4"> 使用示例</span>
+**[点击查看小程序代码片段](https://developers.weixin.qq.com/s/pUQ4Xkma79xd)**
 ```javascript
 //第一步，安装插件：
 npm install spa-custom-hooks

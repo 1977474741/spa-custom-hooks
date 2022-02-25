@@ -6,9 +6,6 @@ Page({
     logs: []
   },
   onLoad() {
-    setTimeout(()=>{
-      // globalData.userInfo = 1
-    },2000)
     console.log('logs页onLoad');
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map(log => {
@@ -19,13 +16,13 @@ Page({
       })
     })
   },
-  onLaunch(){
-    console.log('logs页onLaunch');
+  onLoadUser(options){
+    const userinfo = JSON.stringify(globalData.userInfo)
+    // 拿到用户信息了，可以走依赖用户信息的逻辑了
+    console.log('logs页onLoadUser',options,userinfo);
   },
-  onLoadUser(){
-    console.log('logs页onLoadUser');
-  },
-  onShowReady(){
+  onShowReady(options){
+    // 渲染完页面并且每次显示页面执行
     console.log('logs页onShowReady');
   }
 })

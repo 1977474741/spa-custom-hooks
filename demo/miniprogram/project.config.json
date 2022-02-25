@@ -10,34 +10,48 @@
     },
     "setting": {
         "urlCheck": true,
-        "scopeDataCheck": false,
-        "coverView": true,
         "es6": false,
+        "enhance": true,
         "postcss": true,
-        "compileHotReLoad": false,
-        "lazyloadPlaceholderEnable": false,
         "preloadBackgroundData": false,
         "minified": true,
-        "autoAudits": false,
         "newFeature": false,
+        "coverView": true,
+        "nodeModules": true,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": true,
+        "scopeDataCheck": false,
         "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
         "uploadWithSourceMap": true,
-        "useIsolateContext": false,
-        "nodeModules": false,
-        "enhance": true,
+        "compileHotReLoad": false,
+        "lazyloadPlaceholderEnable": false,
         "useMultiFrameRuntime": true,
         "useApiHook": true,
         "useApiHostProcess": true,
-        "showShadowRootInWxmlPanel": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "useIsolateContext": false,
+        "userConfirmedBundleSwitch": false,
         "packNpmManually": false,
-        "packNpmRelationList": [],
+        "packNpmRelationList": [
+            {
+                "packageJsonPath": "./package.json"
+            }
+        ],
         "minifyWXSS": true,
         "disableUseStrict": false,
-        "minifyWXML": true
+        "minifyWXML": true,
+        "showES6CompileOption": false,
+        "useCompilerPlugins": false
     },
     "compileType": "miniprogram",
     "libVersion": "2.19.4",
-    "appid": "wx5a22ae6ea8bdc1ee",
+    "appid": "wxc0e17e34db6aaf80",
     "projectname": "spa-custom-hooks",
     "debugOptions": {
         "hidedInDevtools": []

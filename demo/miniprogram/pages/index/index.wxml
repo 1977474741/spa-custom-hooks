@@ -1,10 +1,10 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <view class="userinfo-avatar" bindtap="bindViewTap">
+  <view class="userinfo" bindtap="bindViewTap">
+    <view class="userinfo-avatar">
         <open-data type="userAvatarUrl"></open-data>
       </view>
-      <open-data type="userNickName"></open-data>
+      <span>点击跳转二级页面</span>
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>

@@ -54,7 +54,7 @@ export default {
 ````
 
 ## <span id="head4"> Usage example</span>
-**[Click to view the snippet of applet code](https://developers.weixin.qq.com/s/pUQ4Xkma79xd)**
+*[Click to view the snippet of applet code](https://developers.weixin.qq.com/s/pUQ4Xkma79xd)*
 ```javascript
 //The first step is to install the plug-in:
 npm install spa-custom-hooks

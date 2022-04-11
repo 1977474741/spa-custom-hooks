@@ -51,5 +51,11 @@ App({
       }
     })
   },
+  onShowLogin(){
+    console.log('app.vue页onShowLogin');
+  },
+  onLaunchLogin(){
+    console.log('app.vue页onLaunchLogin');
+  },
   globalData
 })

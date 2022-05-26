@@ -8,7 +8,8 @@
         "serve": "rollup --config rollup.config.js && vue-cli-service serve",
         "build": "rollup --config rollup.config.js && vue-cli-service build",
         "dev": "rollup --config rollup.config.js -w",
-        "prepublishOnly": "rollup --config rollup.config.js"
+        "prepublishOnly": "rollup --config rollup.config.js",
+        "semantic-release": "semantic-release"
     },
     "main": "/lib/spa-custom-hooks.js",
     "repository": {
@@ -35,7 +36,11 @@
         "vue": "^2.6.11",
         "vue-router": "^3.2.0",
         "vue-template-compiler": "^2.6.11",
-        "vuex": "^3.4.0"
+        "vuex": "^3.4.0",
+        "semantic-release": "^19.0.2",
+        "@qiwi/semantic-release-gh-pages-plugin": "^5.2.0",
+        "@semantic-release/changelog": "^6.0.1",
+        "@semantic-release/git": "^10.0.1"
     },
     "license": "MIT"
 }

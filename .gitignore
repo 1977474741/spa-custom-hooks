@@ -3,7 +3,6 @@ node_modules
 miniprogram_npm
 package-lock.json
 desktop.ini
-demo/h5
 
 # local env files
 .env.local

@@ -1,0 +1,45 @@
+# name字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名。
+name: Release
+# on字段指定触发jobs工作流的条件，通常是某些事件，比如push、fork，支持数组。
+on:
+  # 完整事件列表 https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+  push:
+    branches:
+      - main
+
+# 每个任务都会创建独立的工作空间，互不共享
+jobs:
+  # 任务1
+  release:
+    name: Release
+    # 虚拟机环境，可用环境 https://github.com/actions/virtual-environments
+    runs-on: ubuntu-20.04
+    # 具体步骤
+    steps:
+      # 1.检出你在当前github工作空间的项目
+      - name: Checkout
+        uses: actions/checkout@v3
+        # 具体参数 https://github.com/actions/checkout
+        with:
+          # 1.只检出当前分支 0.检出所有分支
+          fetch-depth: 1
+      
+        # 2.安装node
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        # 具体参数,以及支持的node版本 https://github.com/actions/setup-node
+        with:
+          node-version: 16
+
+        # 3.打包
+      - name: build
+        run: npm i && npm run build
+
+        # 4.运行semantic-release
+      - name: Release
+        # 需要的环境变量
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release

@@ -152,7 +152,7 @@ Launch、Created、Load、Attached、Show、Mounted、Ready
 - [ diyHooks对象说明](#head7)
 
 ## <span id="head10"> Demo二维码</span>
-![left image description here](https://pubser-res.zhenai.com/other/temp/202103/20/16460141027094.png?imageMogr2/thumbnail/200x200)
+![left image description here](https://photo.zastatic.com/images/common-cms/it/20220531/1653983381580_599944_t.png?imageMogr2/thumbnail/200x200)
 
 ## <span id="head11"> 进群交流</span>
 ![left image description here](https://pubser-res.zhenai.com/other/temp/202103/20/17024414117439.png?imageMogr2/thumbnail/203x203)

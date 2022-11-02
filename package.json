@@ -5,10 +5,10 @@
     "author": "鹅鹅鹅 <1977474741@qq.com>",
     "homepage": "https://github.com/1977474741/spa-custom-hooks.git",
     "scripts": {
-        "serve": "rollup --config rollup.config.js && vue-cli-service serve",
-        "build": "rollup --config rollup.config.js && vue-cli-service build",
-        "dev": "rollup --config rollup.config.js -w",
-        "prepublishOnly": "rollup --config rollup.config.js",
+        "serve": "set NODE_OPTIONS=--openssl-legacy-provider & rollup --config rollup.config.mjs && vue-cli-service serve",
+        "build": "set NODE_OPTIONS=--openssl-legacy-provider & rollup --config rollup.config.mjs && vue-cli-service build",
+        "dev": "set NODE_OPTIONS=--openssl-legacy-provider &rollup --config rollup.config.mjs -w",
+        "prepublishOnly": "rollup --config rollup.config.mjs",
         "semantic-release": "semantic-release"
     },
     "main": "/lib/spa-custom-hooks.js",
@@ -24,6 +24,8 @@
         "/README.md"
     ],
     "devDependencies": {
+        "webpack": "^5.74.0",
+        "rollup": "^3.2.5",
         "@babel/preset-env": "^7.14.1",
         "@rollup/plugin-babel": "^5.3.0",
         "@vue/cli-plugin-babel": "~4.5.0",

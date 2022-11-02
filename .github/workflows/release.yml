@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-node@v1
         # 具体参数,以及支持的node版本 https://github.com/actions/setup-node
         with:
-          node-version: 16
+          node-version: 18
 
         # 3.打包
       - name: build

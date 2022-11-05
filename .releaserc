@@ -21,6 +21,7 @@
             "@semantic-release/git",
             {
                 "assets": [
+                    "lib/spa-custom-hooks.js",
                     "package.json",
                     "CHANGELOG.md"
                 ],

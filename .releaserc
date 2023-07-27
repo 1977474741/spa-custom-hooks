@@ -22,6 +22,7 @@
             {
                 "assets": [
                     "lib/spa-custom-hooks.js",
+                    "lib/spa-custom-hooks.mjs",
                     "package.json",
                     "CHANGELOG.md"
                 ],

@@ -5,42 +5,41 @@
     "author": "鹅鹅鹅 <1977474741@qq.com>",
     "homepage": "https://github.com/1977474741/spa-custom-hooks.git",
     "scripts": {
-        "serve": "rollup --config rollup.config.js && vue-cli-service serve",
-        "build": "rollup --config rollup.config.js && vue-cli-service build",
-        "dev": "rollup --config rollup.config.js -w",
-        "prepublishOnly": "rollup --config rollup.config.js",
+        "serve": "rollup --config rollup.config.mjs && NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve",
+        "build": "rollup --config rollup.config.mjs && NODE_OPTIONS=--openssl-legacy-provider --openssl-legacy-provider vue-cli-service build",
+        "dev": "rollup --config rollup.config.mjs -w",
+        "prepublishOnly": "rollup --config rollup.config.mjs",
         "semantic-release": "semantic-release"
     },
-    "main": "/lib/spa-custom-hooks.js",
+    "main": "./lib/spa-custom-hooks.js",
+    "module": "./lib/spa-custom-hooks.mjs",
     "repository": {
         "type": "git",
         "url": "https://github.com/1977474741/spa-custom-hooks.git"
     },
     "npm": "https://www.npmjs.com/package/spa-custom-hooks",
-    "dependencies": {},
     "files": [
         "/lib/",
         "/package.json",
         "/README.md"
     ],
     "devDependencies": {
-        "@babel/preset-env": "^7.14.1",
-        "@rollup/plugin-babel": "^5.3.0",
+        "@qiwi/semantic-release-gh-pages-plugin": "^5.2.0",
+        "@rollup/plugin-babel": "^6.0.3",
+        "@rollup/plugin-terser": "^0.4.3",
+        "@semantic-release/changelog": "^6.0.1",
+        "@semantic-release/git": "^10.0.1",
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-router": "~4.5.0",
         "@vue/cli-plugin-vuex": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
-        "babel-preset-es2015-rollup": "^3.0.0",
         "core-js": "^3.6.5",
-        "rollup-plugin-terser": "^7.0.2",
+        "rollup": "^3.26.2",
+        "semantic-release": "^19.0.2",
         "vue": "^2.6.11",
         "vue-router": "^3.2.0",
         "vue-template-compiler": "^2.6.11",
-        "vuex": "^3.4.0",
-        "semantic-release": "^19.0.2",
-        "@qiwi/semantic-release-gh-pages-plugin": "^5.2.0",
-        "@semantic-release/changelog": "^6.0.1",
-        "@semantic-release/git": "^10.0.1"
+        "vuex": "^3.4.0"
     },
     "license": "MIT"
 }

@@ -1,5 +1,17 @@
 更新日志
 
+# [1.3.0](https://github.com/1977474741/spa-custom-hooks/compare/v1.2.7...v1.3.0) (2023-12-01)
+
+
+### Bug Fixes
+
+* 优化构建方式 ([21a7608](https://github.com/1977474741/spa-custom-hooks/commit/21a760884d499cc4fb6498533b28481a1345eeb8))
+
+
+### Features
+
+* 支持所有小程序的组件钩子，包括lifetimes 和 pageLifetimes，优化钩子匹配分割算法，适配uniapp钩子 ([3662a19](https://github.com/1977474741/spa-custom-hooks/commit/3662a19b8ae69aaea8756200fc32241860c4bad1))
+
 ## [1.2.7](https://github.com/1977474741/spa-custom-hooks/compare/v1.2.6...v1.2.7) (2023-07-27)
 
 

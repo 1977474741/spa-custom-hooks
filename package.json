@@ -1,12 +1,12 @@
 {
     "name": "spa-custom-hooks",
-    "version": "1.2.5",
+    "version": "1.2.7",
     "description": "业务层的自定义钩子，支持vue架构和各种小程序",
     "author": "鹅鹅鹅 <1977474741@qq.com>",
     "homepage": "https://github.com/1977474741/spa-custom-hooks.git",
     "scripts": {
         "serve": "rollup --config rollup.config.mjs && NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve",
-        "build": "rollup --config rollup.config.mjs && NODE_OPTIONS=--openssl-legacy-provider --openssl-legacy-provider vue-cli-service build",
+        "build": "rollup --config rollup.config.mjs && NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build",
         "dev": "rollup --config rollup.config.mjs -w",
         "prepublishOnly": "rollup --config rollup.config.mjs",
         "semantic-release": "semantic-release"

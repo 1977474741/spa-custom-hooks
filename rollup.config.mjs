@@ -22,7 +22,7 @@ export default {
                 [
                     '@babel/preset-env',
                     {
-                        targets: '> 0.1%, last 2 versions, Firefox ESR, not dead',
+                        targets: ['IE >= 8'],
                     },
                 ],
             ],

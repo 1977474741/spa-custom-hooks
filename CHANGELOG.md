@@ -1,5 +1,12 @@
 更新日志
 
+# [1.4.0](https://github.com/1977474741/spa-custom-hooks/compare/v1.3.0...v1.4.0) (2023-12-06)
+
+
+### Features
+
+* 优化钩子cycleEnd逻辑 ([274d2fb](https://github.com/1977474741/spa-custom-hooks/commit/274d2fbee8905a6638c007014f91070263147355))
+
 # [1.3.0](https://github.com/1977474741/spa-custom-hooks/compare/v1.2.7...v1.3.0) (2023-12-01)
 
 

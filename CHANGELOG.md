@@ -1,5 +1,12 @@
 更新日志
 
+## [1.4.1](https://github.com/1977474741/spa-custom-hooks/compare/v1.4.0...v1.4.1) (2023-12-08)
+
+
+### Performance Improvements
+
+* 优化钩子触发逻辑 ([6fa493c](https://github.com/1977474741/spa-custom-hooks/commit/6fa493c711777124d899b0a9404780a87dd93b45))
+
 # [1.4.0](https://github.com/1977474741/spa-custom-hooks/compare/v1.3.0...v1.4.0) (2023-12-06)
 
 

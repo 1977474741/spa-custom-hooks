@@ -1,5 +1,12 @@
 更新日志
 
+## [1.4.2](https://github.com/1977474741/spa-custom-hooks/compare/v1.4.1...v1.4.2) (2024-01-22)
+
+
+### Bug Fixes
+
+* 修复微信小程序平台下组件内自定义钩子不触发的问题 ([8a422a1](https://github.com/1977474741/spa-custom-hooks/commit/8a422a1bdbfb9dfd05603593a2945349b3e993d1))
+
 ## [1.4.1](https://github.com/1977474741/spa-custom-hooks/compare/v1.4.0...v1.4.1) (2023-12-08)
 
 

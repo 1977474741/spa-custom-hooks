@@ -15,7 +15,7 @@
 -   [ 注册参数说明](#head5)
     -   [ 注册 CustomHook](#head6)
     -   [ diyHooks 对象说明](#head7)
--   [ 钩子使用规则](#head8)
+-   [ 钩子使用规则（使用必看）](#head8)
 -   [ 已经内置的原生钩子](#head9)
 -   [ Demo 二维码](#head10)
 -   [ 进群交流](#head11)
@@ -62,7 +62,7 @@ _[点击查看小程序代码片段](https://developers.weixin.qq.com/s/pUQ4Xkma
 
 ```javascript
 //第一步，安装插件：
-npm install spa-custom-hooks
+npm install spa-custom-hooks --save
 
 //第二步，入口文件里注册插件：
 import CustomHook from 'spa-custom-hooks';
@@ -147,11 +147,17 @@ CustomHook.install(diyHooks, globalData);
 }
 ```
 
-## <span id="head8"> 钩子使用规则</span>
+## <span id="head8"> 钩子使用规则（使用必看）</span>
 
 ```javascript
 `on{UserInfo}{BeforeMount}{Login}{Position}...`; //所有注册好的钩子都可以随意搭配，排列顺序不影响钩子执行，都是 && 的关系
 ```
+
+#### 特别注意：
+
+-   以上规则适用于所有自定义钩子，包括 App、Page、Component，Component 内的 lifetimes 和 pageLifetimes，统统都要加 on 前缀。
+-   App、Page、Component 内同样的自定义钩子只能存在一个，lifetimes 内的优先。
+-   不支持在各平台的 Mixin 内使用自定义钩子。
 
 ## <span id="head9"> 已经注册好的生命周期钩子</span>
 

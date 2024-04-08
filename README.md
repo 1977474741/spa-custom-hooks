@@ -175,3 +175,5 @@ CustomHook.install(diyHooks, globalData);
 如果有什么好的建议欢迎提 issues 或者提 pr
 
 喜欢的话点个 star
+
+[![Star History Chart](https://api.star-history.com/svg?repos=1977474741/spa-custom-hooks&type=Date)](https://star-history.com/#1977474741/spa-custom-hooks&Date)

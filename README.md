@@ -25,7 +25,7 @@
 -   一个可以定制页面钩子的东西，你可以注册全局的异步任务，自己定义钩子的触发条件，满足条件时即可自动执行页面里相关的钩子。
 -   支持和 Vue 的原生钩子 created，mounted 等随意搭配使用。
 -   支持 Vue 架构（包括 uni-app、wepy、mpvue 等）以及各种小程序(微信、支付宝、字节等)。
--   最新版本支持了所有原生小程序组件使用，包括 lifetimes 和 pageLifetimes 钩子，单独对 uniapp 钩子做了适配。
+-   :sparkles: **最新版本支持了所有原生小程序件使用，包括 lifetimes 和 pageLifetimes 钩子，并且对 uniapp 钩子的这部分做了适配。**
 
 ## <span id="head2"> 它有什么用？</span>
 
